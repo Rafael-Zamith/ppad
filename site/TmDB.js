@@ -30,13 +30,30 @@ function separarResultados(data) {
     resultados = data.results;
     for (let i = 0; i < resultados.length; i++){
         var url = "";
-        pegarimagem(resultados[i].poster_path, i);
-        if (resultados[i].media_type == "movie") { url = "bucar filme" }
-        if (resultados[i].media_type == "tv") { url = "bucar serie" }
+        pegarimagem(resultados[i].poster_path);
+        if (resultados[i].media_type == "movie") { url = "bucar filme" };
+        if (resultados[i].media_type == "tv") { url = "bucar serie" };
         pegarDescFilme(url); //precisa de outro fech
+        if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
+        if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
+
+        
     }
 }
-
+function pegarTitulo(titulo) {
+    if (titulo != null) {
+        var y = document.createElement("p");
+        var t = document.createTextNode(titulo);
+        y.appendChild(t);
+        document.body.appendChild(y);
+    }
+    else {
+        var y = document.createElement("p");
+        var t = document.createTextNode("sem titulo");
+        y.appendChild(t);
+        document.body.appendChild(y);
+    }
+}
 function pegarDescFilme(url) {
     var desc = desc;
     var url = url;
@@ -45,9 +62,8 @@ function pegarDescFilme(url) {
 }
 
 
-function pegarimagem(idm, index) {
+function pegarimagem(idm) {
     if (idm != null) {
-        var id = "img" + String(index);
         var urll = basei + String(idm);
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", urll);
