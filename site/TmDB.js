@@ -26,7 +26,7 @@ function separarResultados(data) {
 
         if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
         if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
-        pegarimagem(resultados[i].poster_path);
+        pegarimagem(resultados[i].poster_path, resultados[i].id);
         buscarPorId(resultados[i].id);
         //pegarDesc(individual.overview);
         
@@ -92,11 +92,14 @@ function pegarDesc(desc) {
 
 }
 
-function pegarimagem(idm) {
+function pegarimagem(idm, id) {
     if (idm != null) {
         var urll = basei + String(idm);
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", urll);
+        x.setAttribute("id", id);
+        x.setAttribute("onClick", "abrirElemento(this.id)");
+        //x.setAttribute("href", link);
         x.setAttribute("alt", title);
         final = true;
         z.appendChild(x);
@@ -105,6 +108,9 @@ function pegarimagem(idm) {
     else {
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", "imagens/noimage.png");
+        x.setAttribute("id", id);
+        x.setAttribute("onClick", "abrirElemento(this.id)");
+        //x.setAttribute("href", link);
         x.setAttribute("alt", title);
         final = true;
         z.appendChild(x);
@@ -112,3 +118,9 @@ function pegarimagem(idm) {
     }
 }
 
+
+
+function abrirElemento(id) {
+    //abrir pagina com id
+
+}
