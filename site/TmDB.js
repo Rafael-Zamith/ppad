@@ -4,6 +4,7 @@ var pesquisa = "";
 var title = "";
 var final = true;
 var resultados;
+var individual;
 
 function search(ele) {
     if (event.key === 'Enter') {
@@ -16,9 +17,42 @@ function search(ele) {
         }
     }
 }
-function buscarPorId(id) {
-    var urli = "";
+function separarResultados(data) {
+    individual = null;
+    resultados = data.results;
+    for (let i = 0; i < resultados.length; i++) {
+        z = document.createElement("div");
+        z.setAttribute("id", i);
+
+        if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
+        if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
+        pegarimagem(resultados[i].poster_path);
+        buscarPorId(resultados[i].id);
+        //pegarDesc(individual.overview);
+        
+        document.body.appendChild(z);
+    }
 }
+
+function buscarPorId(id) {
+    var erro = null;
+    var url = "https://api.themoviedb.org/3/movie/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR";
+    fetch(url)
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            else { throw new Error("error"); }
+        })
+        .then(data => separarIndv(data))
+        .catch((error) => separarIndv(erro));
+}
+
+
+function separarIndv(data) {
+    individual = data;
+}
+
 function buscarPorNome() {
     fetch(pesquisa)
         .then(response => response.json())
@@ -26,41 +60,37 @@ function buscarPorNome() {
 }
 
 
-function separarResultados(data) {
-    resultados = data.results;
-    for (let i = 0; i < resultados.length; i++){
-        var url = "";
-        pegarimagem(resultados[i].poster_path);
-        if (resultados[i].media_type == "movie") { url = "bucar filme" };
-        if (resultados[i].media_type == "tv") { url = "bucar serie" };
-        pegarDescFilme(url); //precisa de outro fech
-        if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
-        if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
 
-        
-    }
-}
 function pegarTitulo(titulo) {
     if (titulo != null) {
-        var y = document.createElement("p");
+        var y = document.createElement("p"); //mudar isso para trocar o texto
         var t = document.createTextNode(titulo);
         y.appendChild(t);
-        document.body.appendChild(y);
+        z.appendChild(y);
     }
     else {
         var y = document.createElement("p");
         var t = document.createTextNode("sem titulo");
         y.appendChild(t);
-        document.body.appendChild(y);
+        z.appendChild(y);
     }
 }
-function pegarDescFilme(url) {
-    var desc = desc;
-    var url = url;
 
-    //dom para descrição
+function pegarDesc(desc) {
+    if (desc != null) {
+        var y = document.createElement("p"); //mudar isso para trocar o texto
+        var t = document.createTextNode(desc);
+        y.appendChild(t);
+        z.appendChild(y);
+    }
+    else {
+        var y = document.createElement("p");
+        var t = document.createTextNode("sem descrição");
+        y.appendChild(t);
+        z.appendChild(y);
+    }
+
 }
-
 
 function pegarimagem(idm) {
     if (idm != null) {
@@ -69,7 +99,7 @@ function pegarimagem(idm) {
         x.setAttribute("src", urll);
         x.setAttribute("alt", title);
         final = true;
-        document.body.appendChild(x);
+        z.appendChild(x);
         final = true;
     }
     else {
@@ -77,7 +107,7 @@ function pegarimagem(idm) {
         x.setAttribute("src", "imagens/noimage.png");
         x.setAttribute("alt", title);
         final = true;
-        document.body.appendChild(x);
+        z.appendChild(x);
         final = true;
     }
 }
