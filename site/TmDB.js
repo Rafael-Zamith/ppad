@@ -115,20 +115,44 @@ function pegarimagem(idm, id) {
 
 
 
-function abrirElemento(id) {
+function abrirElemento(id) {  //ignorar tudo isso e usar session local storage
     //criar novo html
-    const doc = document.implementation.createHTMLDocument(title);
+    const doc = document.implementation.createHTMLDocument("title");
+    let s = doc.createElement("script");
+    s.setAttribute("src", "TmDB.js");
+    try {
+        doc.body.appendChild(s);
+    } catch (error) {
+        console.log(error);
+    }
+    
     let p = doc.createElement("p");
     p.textContent = title;
-    let img = doc.createElement("img");
+    try {
+        doc.body.appendChild(p);
+    } catch (error) {
+        console.log(error);
+    }
+    
+    let img = document.createElement("img");
     img.setAttribute("src", urll);
     img.setAttribute("alt", title);
+    try {
+        doc.body.appendChild(img);
+    } catch (error) {
+        console.log(error);
+    }
+    
     buscarPorId(id);
     //pegarDesc(individual.overview);
-    var x = document.createElement('iframe');
-    x.setAttribute("src", doc);
-    x.setAttribute("stile", "display: block; background: #000; border: none;height: 100vh;width: 100vw;");
-           
+
+    var x = document.getElementById('iframe');
+    x.setAttribute("style", "display: block; border: none;height: 100vh;width: 100vw;");
+    let destDocument = x.contentDocument;
+    let srcNode = doc.documentElement;
+    let newNode = destDocument.importNode(srcNode, true);
+
+    destDocument.replaceChild(newNode, destDocument.documentElement);
         //modificar iframe
 
         //exibir no topo
@@ -136,20 +160,6 @@ function abrirElemento(id) {
         //carregar as informaçõe
 
 
-    document.body.appendChild(x);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //document.body.appendChild(x);
 
 }
