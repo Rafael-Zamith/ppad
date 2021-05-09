@@ -5,6 +5,7 @@ var title = "";
 var final = true;
 var resultados;
 var individual;
+var urll = "";
 
 function search(ele) {
     if (event.key === 'Enter') {
@@ -17,6 +18,7 @@ function search(ele) {
         }
     }
 }
+
 function separarResultados(data) {
     individual = null;
     resultados = data.results;
@@ -27,9 +29,8 @@ function separarResultados(data) {
         if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
         if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
         pegarimagem(resultados[i].poster_path, resultados[i].id);
-        buscarPorId(resultados[i].id);
-        //pegarDesc(individual.overview);
-        
+
+
         document.body.appendChild(z);
     }
 }
@@ -41,17 +42,12 @@ function buscarPorId(id) {
         .then(response => {
             if (response.ok) {
                 return response.json();
-            }
-            else { throw new Error("error"); }
+            } else { throw new Error("error"); }
         })
-        .then(data => separarIndv(data))
-        .catch((error) => separarIndv(erro));
+        .then(data => pegarDesc(data.overview))
+        .catch((error) => pegarDesc(erro));
 }
 
-
-function separarIndv(data) {
-    individual = data;
-}
 
 function buscarPorNome() {
     fetch(pesquisa)
@@ -67,12 +63,13 @@ function pegarTitulo(titulo) {
         var t = document.createTextNode(titulo);
         y.appendChild(t);
         z.appendChild(y);
-    }
-    else {
+        title = titulo;
+    } else {
         var y = document.createElement("p");
         var t = document.createTextNode("sem titulo");
         y.appendChild(t);
         z.appendChild(y);
+        title = "Filme";
     }
 }
 
@@ -82,8 +79,7 @@ function pegarDesc(desc) {
         var t = document.createTextNode(desc);
         y.appendChild(t);
         z.appendChild(y);
-    }
-    else {
+    } else {
         var y = document.createElement("p");
         var t = document.createTextNode("sem descrição");
         y.appendChild(t);
@@ -94,7 +90,7 @@ function pegarDesc(desc) {
 
 function pegarimagem(idm, id) {
     if (idm != null) {
-        var urll = basei + String(idm);
+        urll = basei + String(idm);
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", urll);
         x.setAttribute("id", id);
@@ -104,8 +100,7 @@ function pegarimagem(idm, id) {
         final = true;
         z.appendChild(x);
         final = true;
-    }
-    else {
+    } else {
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", "imagens/noimage.png");
         x.setAttribute("id", id);
@@ -121,6 +116,40 @@ function pegarimagem(idm, id) {
 
 
 function abrirElemento(id) {
-    //abrir pagina com id
+    //criar novo html
+    const doc = document.implementation.createHTMLDocument(title);
+    let p = doc.createElement("p");
+    p.textContent = title;
+    let img = doc.createElement("img");
+    img.setAttribute("src", urll);
+    img.setAttribute("alt", title);
+    buscarPorId(id);
+    //pegarDesc(individual.overview);
+    var x = document.createElement('iframe');
+    x.setAttribute("src", doc);
+    x.setAttribute("stile", "display: block; background: #000; border: none;height: 100vh;width: 100vw;");
+           
+        //modificar iframe
+
+        //exibir no topo
+
+        //carregar as informaçõe
+
+
+    document.body.appendChild(x);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
