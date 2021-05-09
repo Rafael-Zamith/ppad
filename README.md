@@ -1,3 +1,5 @@
+desenvolvimento do site acontece na dev branch, caso queira acomapnhar
+
 # ppads-projeto
 Projeto de Prática Profissional de Análise e Desenvolvimento de Sistemas.
 
