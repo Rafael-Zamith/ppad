@@ -37,7 +37,7 @@ function buscarPorNome(pesquisa) {
 
 function setItem(item) {
     console.log(item)
-    sessionStorage.setItem("pesq", JSON.stringify(item));
+    localStorage.setItem("pesq", JSON.stringify(item));
 }
 
 function separarResultados(data) {
@@ -49,7 +49,7 @@ function separarResultados(data) {
 
         if (resultados[i].media_type == "movie") { pegarTitulo(resultados[i].title) };
         if (resultados[i].media_type == "tv") { pegarTitulo(resultados[i].name) };
-        pegarimagem(resultados[i], resultados[i].id);
+        pegarimagem(resultados[i]);
 
 
         document.body.appendChild(z);
@@ -87,7 +87,7 @@ function pegarDesc(desc) {
 
 }
 
-function pegarimagem(idm, id) {
+function pegarimagem(idm) {
     var url = "";
     if (idm.poster_path != null) {
         url = basei + String(idm.poster_path);
@@ -103,7 +103,7 @@ function pegarimagem(idm, id) {
     } else {
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", "imagens/noimage.png");
-        x.setAttribute("id", id);
+        x.setAttribute("id", idm.id);
         x.setAttribute("onClick", "abrirElemento(this.id)");
         //x.setAttribute("href", link);
         x.setAttribute("alt", title);
@@ -116,7 +116,7 @@ function pegarimagem(idm, id) {
 
 
 function abrirElemento(id) {  
-    buscarPorId(id);
-    //window.location.href = "http://stackoverflow.com";//redirecionar
+
+    window.location.href = "item.html?id=" + id;//redirecionar
 
 }
