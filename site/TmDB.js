@@ -5,8 +5,7 @@ var title = "";
 var final = true;
 
 
-
-function search(ele) {
+function search(ele) { //n usado mais
     if (event.key === 'Enter') {
         if (final == true) {
             final = false;
@@ -36,7 +35,6 @@ function buscarPorNome(pesquisa) {
 }
 
 function setItem(item) {
-    console.log(item)
     localStorage.setItem("pesq", JSON.stringify(item));
 }
 

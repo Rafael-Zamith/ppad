@@ -2,6 +2,7 @@
 <html>
 <script src="TmDB.js"></script>
 <script src="item.js"></script>
+<script src="form.js"></script>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -36,10 +37,10 @@
             <div>
                 <h2 class="sub-titulo">Pesquisar</h2>
                 <div class="forms-btn" >
-                        |<!--<form class="example" style="margin:auto;max-width:600px"> -->
-                            <input type="text" placeholder="Pesquisar.." name="search2" onkeydown="search(this)">
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        <!--</form> -->
+                        <form class="example" style="margin:auto;max-width:600px" onsubmit="return false" >
+                            <input type="text" placeholder="Pesquisar.." name="search2" id = "2" >
+                            <button type="submit" onclick="onSub(document.getElementById('2').value)"><i class="fa fa-search"></i></button>
+                        </form>
                 </div>
             </div>
         </main>

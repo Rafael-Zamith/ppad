@@ -16,7 +16,6 @@ function onload() {
     //pegar e buscar id na api
     var id = window.location.href;
     id = id.split("=").pop();
-    console.log(id);
     buscarPorId(id);
     checarStorage();
 
