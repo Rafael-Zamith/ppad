@@ -5,28 +5,78 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import io.dropwizard.Application;
+import io.dropwizard.Configuration;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.jdbi3.JdbiFactory;
+import io.dropwizard.migrations.MigrationsBundle;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
+import org.jdbi.v3.core.Jdbi;
+
+import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
+
+import com.example.DAO.loginDAO;
+import com.example.Resources.loginResources;
+
+import java.util.EnumSet;
 
 
-public class JDBC {
+public class JDBC extends Application <LoginServiceConfiguration>{
 	public static void main(String [] args) throws SQLException{
-		String url = "jdbc:mysql://nasana.duckdns.org:3306/prod";//localhost mysql
-		String username = "prod";//Usuario
-		String password = "wC5]BXB83l";//Senha
-		String query = "SELECT"; //comando mysql
-	
+
 	try{
-		Class.forName("com.mysql.cj.jdbc.Driver");//checar o diver do conector
-	}catch (ClassNotFoundException e) {
-		e.printStackTrace();
+		(new JDBC()).run(args);
 	}
-	
-	try {
-		Connection con = DriverManager.getConnection(url,username,password);
-		Statement statement = con.createStatement();
-		ResultSet result = statement.executeQuery(query);
+	catch (Exception ex){
+		ex.printStackTrace();
 	}
-	catch (SQLException e){
-		e.printStackTrace();
-	}
+}
+
+public String getName(){
+	return "Dataservice";
+}
+
+public void initialize (final Bootstrap<LoginServiceConfiguration> bootstrap){
+	bootstrap.addBundle(new MigrationsBundle<LoginServiceConfiguration>() {
+		@Override
+		public void run(LoginServiceConfiguration productServiceConfiguration, Environment environment) throws Exception {
+		}
+
+		@Override
+		public DataSourceFactory getDataSourceFactory(LoginServiceConfiguration configuration) {
+			return configuration.getDataSourceFactory();
+		}
+
+		@Override
+		public String name() {
+			return "db";
+		}
+	});
+}
+
+  @Override
+  public void run(final LoginServiceConfiguration configuration, final Environment environment){
+	  final JdbiFactory factory = new JdbiFactory();
+	  final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "db");
+	  loginDAO loginDAO = jdbi.onDemand(loginDAO.class);
+
+
+	  loginResources dataResources = new loginResources(loginDAO);
+	  environment.jersey().register(dataResources);
+
+	  // Enable CORS headers
+	  final FilterRegistration.Dynamic cors =
+			  environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+
+	  // Configure CORS parameters
+	  cors.setInitParameter("allowedOrigins", "*");
+	  cors.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
+	  cors.setInitParameter("allowedMethods", "OPTIONS,GET,PUT,POST,DELETE,HEAD");
+
+	  // Add URL mapping
+	  cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
   }
 }
