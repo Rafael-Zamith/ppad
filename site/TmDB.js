@@ -5,7 +5,7 @@ var title = "";
 var final = true;
 
 
-function search(ele) { //n usado mais
+function search(ele) { 
     if (event.key === 'Enter') {
         if (final == true) {
             final = false;
