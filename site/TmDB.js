@@ -19,11 +19,16 @@ function search(ele) { //n usado mais
 
 
 
-function buscarPorId(id) {
+function buscarPorId(id, f) {
     var erro = null;
-    var url = "https://api.themoviedb.org/3/movie/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR";
+    var url = "";
+    if (f === "f") { url = "https://api.themoviedb.org/3/movie/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
+    if (f === "s") { url = "https://api.themoviedb.org/3/tv/"    + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
+    console.log(url);
+    console.log(f);
+    console.log(String(id));
     fetch(url)
-        .then(response => response.json())
+        .then(response => response.json()) //catch erro e tentar com filme
         .then(data => setItem(data));
 }
 
@@ -55,8 +60,10 @@ function separarResultados(data) {
 }
 
 function pegarTitulo(titulo) {
+    console.log(titulo);
     if (titulo != null) {
-        var y = document.createElement("p"); //mudar isso para trocar o texto
+        var y = document.getElementById(2); //mudar isso para trocar o texto
+        console.log(titulo);
         var t = document.createTextNode(titulo);
         y.appendChild(t);
         z.appendChild(y);
@@ -91,7 +98,7 @@ function pegarimagem(idm) {
         url = basei + String(idm.poster_path);
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", url);
-        x.setAttribute("id", idm.id);
+        x.setAttribute("id", idm.id + "=" + idm.media_type);
         x.setAttribute("onClick", "abrirElemento(this.id)");
         //x.setAttribute("href", link);
         x.setAttribute("alt", title);
@@ -101,7 +108,7 @@ function pegarimagem(idm) {
     } else {
         var x = document.createElement("IMG"); //mudar isso para trocar o src da imagem
         x.setAttribute("src", "imagens/noimage.png");
-        x.setAttribute("id", idm.id);
+        x.setAttribute("id", idm.id + "=" + idm.media_type);
         x.setAttribute("onClick", "abrirElemento(this.id)");
         //x.setAttribute("href", link);
         x.setAttribute("alt", title);
@@ -114,7 +121,9 @@ function pegarimagem(idm) {
 
 
 function abrirElemento(id) {  
-
-    window.location.href = "item.html?id=" + id;//redirecionar
+    var ida = id.split("=");
+    console.log(ida)
+    if (ida[1] == "tv") { window.location.href = "item.html?id=" + ida[0] + "=s"; }
+    if (ida[1] == "movie") { window.location.href = "item.html?id=" + ida[0] + "=f";}
 
 }

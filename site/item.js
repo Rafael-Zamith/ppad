@@ -15,15 +15,15 @@ function checarStorage() {
 function onload() {
     //pegar e buscar id na api
     var id = window.location.href;
-    id = id.split("=").pop();
-    buscarPorId(id);
+    id = id.split("=");
+    buscarPorId(id[1], id[2]);
     checarStorage();
-
-
+  
+    console.log(item);
 
     z = document.getElementById("1");
-    if (item.media_type == "movie") { pegarTitulo(item.title) };
-    if (item.media_type == "tv") { pegarTitulo(item.name) };
+    if (id[2] == "f") { pegarTitulo(item.title) };
+    if (id[2] == "s") { pegarTitulo(item.name) };
     pegarimagem(item);
     pegarDesc(item.overview);
     document.body.appendChild(z);
