@@ -123,7 +123,7 @@ function pegarimagem(idm) {
 function abrirElemento(id) {  
     var ida = id.split("=");
     console.log(ida)
-    if (ida[1] == "tv") { window.location.href = "item.html?id=" + ida[0] + "=s"; }
-    if (ida[1] == "movie") { window.location.href = "item.html?id=" + ida[0] + "=f";}
+    if (ida[1] == "tv")    { window.location.href = "descricaofilme.html?id=" + ida[0] + "=s"; }
+    if (ida[1] == "movie") { window.location.href = "descricaofilme.html?id=" + ida[0] + "=f";}
 
 }
