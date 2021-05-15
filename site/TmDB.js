@@ -62,7 +62,7 @@ function separarResultados(data) {
 function pegarTitulo(titulo) {
     console.log(titulo);
     if (titulo != null) {
-        var y = document.getElementById(2); //mudar isso para trocar o texto
+        var y = document.createElement("p"); //mudar isso para trocar o texto
         console.log(titulo);
         var t = document.createTextNode(titulo);
         y.appendChild(t);

@@ -22,11 +22,28 @@ function onload() {
     console.log(item);
 
     z = document.getElementById("1");
-    if (id[2] == "f") { pegarTitulo(item.title) };
-    if (id[2] == "s") { pegarTitulo(item.name) };
+    if (id[2] == "f") { pegarTitul(item.title) };
+    if (id[2] == "s") { pegarTitul(item.name) };
     pegarimage(item);
     pegarDesc(item.overview);
     document.body.appendChild(z);
+}
+function pegarTitul(titulo) {
+    console.log(titulo);
+    if (titulo != null) {
+        var y = document.getElementById("2"); //mudar isso para trocar o texto
+        console.log(titulo);
+        var t = document.createTextNode(titulo);
+        y.appendChild(t);
+        z.appendChild(y);
+        title = titulo;
+    } else {
+        var y = document.createElement("p");
+        var t = document.createTextNode("sem titulo");
+        y.appendChild(t);
+        z.appendChild(y);
+        title = "Filme";
+    }
 }
 
 function pegarimage(idm) {
