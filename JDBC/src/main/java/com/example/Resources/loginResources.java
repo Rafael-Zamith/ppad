@@ -5,6 +5,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.example.Classes.login;
+import com.example.DAO.avaliacDAO;
 import com.example.DAO.loginDAO;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class loginResources {
 
     @GET
     public Response getloginIs(){
-        List<login> alllogin = loginDAO.getAllUsername();
+        List<login> alllogin = loginDAO.getAllLogins();
 
         return Response.ok(alllogin).build();
     }

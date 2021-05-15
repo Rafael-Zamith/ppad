@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import com.example.Resources.avaliacaoResources;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
@@ -19,12 +21,14 @@ import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 
 import com.example.DAO.loginDAO;
+import com.example.DAO.avaliacDAO;
 import com.example.Resources.loginResources;
 
 import java.util.EnumSet;
 
 
 public class JDBC extends Application <LoginServiceConfiguration>{
+
 	public static void main(String [] args) throws SQLException{
 
 	try{
@@ -62,10 +66,13 @@ public void initialize (final Bootstrap<LoginServiceConfiguration> bootstrap){
 	  final JdbiFactory factory = new JdbiFactory();
 	  final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "db");
 	  loginDAO loginDAO = jdbi.onDemand(loginDAO.class);
+	  avaliacDAO avaliacDAO = jdbi.onDemand(avaliacDAO.class);
 
 
-	  loginResources dataResources = new loginResources(loginDAO);
-	  environment.jersey().register(dataResources);
+	  loginResources loginResources = new loginResources(loginDAO);
+	  avaliacaoResources avaliacaoResources = new avaliacaoResources(avaliacDAO);
+	  environment.jersey().register(loginResources);
+	  environment.jersey().register(avaliacaoResources);
 
 	  // Enable CORS headers
 	  final FilterRegistration.Dynamic cors =

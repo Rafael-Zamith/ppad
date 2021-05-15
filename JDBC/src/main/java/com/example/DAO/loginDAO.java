@@ -14,6 +14,6 @@ import com.example.Classes.login;
 @RegisterRowMapper(ProductMapper.class)
 public interface loginDAO {
     //READ
-    @SqlQuery("select username from login")
-    List<login> getAllUsername();
+    @SqlQuery("select * from prod.login")
+    List<login> getAllLogins();
 }
