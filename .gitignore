@@ -2,3 +2,4 @@
 .vscode/settings.json
 JDBC/target/classes/com/example/DAO/ProductMapper.class
 *.class
+*.class
