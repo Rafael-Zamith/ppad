@@ -18,11 +18,12 @@ public interface avaliacDAO {
     List<avaliacao> getAllAvaliacoes();
 
     //READ
-    @SqlQuery("select * from prod.avaliacao where id = :id ")
-    avaliacao findById(@Bind("id_avaliacao")int id_avalicao);
+    @SqlQuery("select * from prod.avaliacao where id_avaliacao = :id_avaliacao ")
+    avaliacao findByAvaliacaoId(@Bind("id_avaliacao")long id_avaliacao);
 
     //CREATE
-    @SqlQuery("insert into prod.avaliacao (id_avaliacao, coment_author, comentarios, curtidas) values (:id_avaliacao, :coment_author, :comentarios, :curtidas")
+    //O drop wizard ta reclamando que ele nao da results mas ta funcionando isso que importa.
+    @SqlQuery("insert into prod.avaliacao (id_avaliacao, coment_author, comentarios, curtidas, id_item) values (:id_avaliacao, :coment_author, :comentarios, :curtidas, :id_item)")
     @GetGeneratedKeys
     long insert (@BindBean avaliacao avaliacao);
 }
