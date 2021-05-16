@@ -97,7 +97,7 @@ function pegarimagem(idm) {
         final = true;
     } else {
         var x = document.createElement("img"); //mudar isso para trocar o src da imagem
-        x.setAttribute("src", "imagens/noimage.png");
+        x.setAttribute("src", "images/2.svg");
         x.setAttribute("id", idm.id + "=" + idm.media_type);
         x.setAttribute("onClick", "abrirElemento(this.id)");
         //x.setAttribute("href", link);

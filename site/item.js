@@ -27,8 +27,8 @@ function buscarPorId(id, f) {
         .then(data => setItem(data, f));
 }
 
-function setItem(a, id) {
-    item = a;
+function setItem(it, id) {
+    item = it;
     console.log(item);
     a = document.getElementById("090");
     z = document.getElementById("100");
@@ -78,7 +78,7 @@ function pegarimage(idm) {
         final = true;
     } else {
         var x = document.getElementById("2"); //mudar isso para trocar o src da imagem
-        x.setAttribute("src", "imagens/noimage.png");
+        x.setAttribute("src", "images/2.svg");
         x.setAttribute("id", idm.id + "=" + idm.media_type);
         x.setAttribute("onClick", "abrirElemento(this.id)");
         //x.setAttribute("href", link);
