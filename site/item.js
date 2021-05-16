@@ -1,15 +1,6 @@
 var item;
 var final = true;
 
-function checarStorage() {
-    item = JSON.parse(localStorage.getItem("pesq"));
-    if (item !== null) {
-        localStorage.removeItem("pesq");
-    }
-    else {
-        console.log("erro na pesquisa");
-    }
-}
 
 
 function onload() {
@@ -18,15 +9,33 @@ function onload() {
     var id = window.location.href;
     id = id.split("=");
     buscarPorId(id[1], id[2]);
-    checarStorage();
+
   
+    
+}
+
+function buscarPorId(id, f) {
+    var erro = null;
+    var url = "";
+    if (f === "f") { url = "https://api.themoviedb.org/3/movie/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
+    if (f === "s") { url = "https://api.themoviedb.org/3/tv/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
+    console.log(url);
+    console.log(f);
+    console.log(String(id));
+    fetch(url)
+        .then(response => response.json()) //catch erro e tentar com filme
+        .then(data => setItem(data, f));
+}
+
+function setItem(a, id) {
+    item = a;
     console.log(item);
     a = document.getElementById("090");
     z = document.getElementById("100");
-    if (id[2] == "f") { pegarTitul(item.title) };
-    if (id[2] == "s") { pegarTitul(item.name) };
+    if (id == "f") { pegarTitul(item.title) };
+    if (id == "s") { pegarTitul(item.name) };
     pegarimage(item);
-    pegarDesc(item.overview);
+    pegarDes(item.overview);
     aa = document.createElement("a");
     aa.setAttribute("href", "");
     aa.setAttribute("class", "u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1");
@@ -35,6 +44,7 @@ function onload() {
     z.appendChild(aa);
     a.appendChild(z);
 }
+
 function pegarTitul(titulo) {
     console.log(titulo);
     if (titulo != null) {

@@ -5,7 +5,8 @@ var title = "";
 var final = true;
 
 
-function search(ele) { 
+function search(ele) {
+    localStorage.clear();
     if (event.key === 'Enter') {
         if (final == true) {
             final = false;
@@ -27,18 +28,6 @@ function carregar() {
 }
 
 
-function buscarPorId(id, f) {
-    var erro = null;
-    var url = "";
-    if (f === "f") { url = "https://api.themoviedb.org/3/movie/" + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
-    if (f === "s") { url = "https://api.themoviedb.org/3/tv/"    + String(id) + "?api_key=f79172df98ee2e8bcdda589aa34b2cb5&language=pt-BR"; }
-    console.log(url);
-    console.log(f);
-    console.log(String(id));
-    fetch(url)
-        .then(response => response.json()) //catch erro e tentar com filme
-        .then(data => setItem(data));
-}
 
 
 function buscarPorNome(pesquisa) {
@@ -48,9 +37,6 @@ function buscarPorNome(pesquisa) {
         .then(data => separarResultados(data));
 }
 
-function setItem(item) {
-    localStorage.setItem("pesq", JSON.stringify(item));
-}
 
 function separarResultados(data) {
     individual = null;
