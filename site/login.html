@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<script src="login.js"></script>
 <html style="font-size: 16px;">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,21 +76,19 @@
         <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-30 u-shape-round u-white u-group-2">
           <div class="u-container-layout u-valign-middle u-container-layout-2">
             <div class="u-form u-form-1">
-              <form action="#" method="POST" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form">
+              <form action="#" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" style="padding: 15px;" source="custom" name="form" onsubmit="return false">
                 <div class="u-form-group u-form-name">
                   <label for="name-6797" class="u-form-control-hidden u-label">Name</label>
-                  <input type="text" placeholder="Usuario" id="name-6797" name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25" required="">
+                  <input type="text" placeholder="Usuario"  name="name" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25" required="" id = "2000">
                 </div>
-                <div class="u-form-email u-form-group">
-                  <label for="email-6797" class="u-form-control-hidden u-label">Email</label>
-                  <input type="email" placeholder="Senha" id="email-6797" name="email" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25" required="">
+                <div class="u-form-password u-form-group">
+                  <label for="password-6797" class="u-form-control-hidden u-label">Senha</label>
+                  <input type="password" placeholder="Senha"  name="password" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-radius-25" required="" id = "200">
                 </div>
                 <div class="u-align-center u-form-group u-form-submit">
                   <a href="#" class="u-border-2 u-border-grey-75 u-btn u-btn-round u-btn-submit u-button-style u-palette-5-light-2 u-radius-26 u-btn-1">Login!</a>
-                  <input type="submit" value="submit" class="u-form-control-hidden">
+                  <input type="submit" value="submit" class="u-form-control-hidden" onclick="login(document.getElementById('2000').value, document.getElementById('200').value)">
                 </div>
-                <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
-                <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
                 <input type="hidden" value="" name="recaptchaResponse">
               </form>
             </div>

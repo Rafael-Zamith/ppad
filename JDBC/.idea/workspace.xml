@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ad3e7124-a19a-45c3-ba0a-ccf1daa08ad4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Classes/avaliacao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Classes/avaliacao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/ProductMapper1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/ProductMapper1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/avaliacDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/avaliacDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DAO/loginDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DAO/loginDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Resources/avaliacaoResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Resources/avaliacaoResources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Resources/loginResources.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Resources/loginResources.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Resources/avaliacaoResources.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Resources/avaliacaoResources.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/Classes/login.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/Classes/login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/DAO/ProductMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/DAO/ProductMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/JDBC$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/JDBC$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/JDBC.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/JDBC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/LoginServiceConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/LoginServiceConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/AppTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/Página-1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/Página-1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../site/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/../site/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Application.drowizard">
