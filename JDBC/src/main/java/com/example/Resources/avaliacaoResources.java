@@ -27,15 +27,11 @@ public class avaliacaoResources {
 
     @GET
     @Path("/{id_avaliacao}")
-    public Response getAvaliacaoAre(@PathParam("id_avaliacao")long id_avaliacao, avaliacao avaliacao){
+    public Response getAvaliacaoAre(@PathParam("id_avaliacao")long id_avaliacao){
         avaliacao avaliacaoid = avaliacDAO.findByAvaliacaoId(id_avaliacao);
 
         if(avaliacaoid == null){
-            long id_avaliacao1 = avaliacDAO.insert(avaliacao);
-            avaliacao = avaliacDAO.findByAvaliacaoId(id_avaliacao1);
 
-            createAvaliacao(avaliacao);
-            return Response.ok(avaliacao).build();
         }
 
         return Response.ok(avaliacaoid).build();

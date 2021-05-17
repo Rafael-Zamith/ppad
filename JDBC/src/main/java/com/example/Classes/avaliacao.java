@@ -9,8 +9,7 @@ public class avaliacao {
 
     public avaliacao(){};
 
-    public avaliacao(long id_avaliacao, String coment_author, String comentarios, int curtidas, long id_item){
-        this.id_avaliacao = id_avaliacao;
+    public avaliacao(String coment_author, String comentarios, int curtidas, long id_item){
         this.coment_author = coment_author;
         this.comentarios = comentarios;
         this.curtidas = curtidas;

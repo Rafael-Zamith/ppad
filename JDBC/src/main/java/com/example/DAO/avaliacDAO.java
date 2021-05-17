@@ -23,7 +23,7 @@ public interface avaliacDAO {
 
     //CREATE
     //O drop wizard ta reclamando que ele nao da results mas ta funcionando isso que importa.
-    @SqlQuery("insert into prod.avaliacao (id_avaliacao, coment_author, comentarios, curtidas, id_item) values (:id_avaliacao, :coment_author, :comentarios, :curtidas, :id_item)")
+    @SqlQuery("insert into prod.avaliacao (coment_author, comentarios, curtidas, id_item) values (:coment_author, :comentarios, :curtidas, :id_item)")
     @GetGeneratedKeys
     long insert (@BindBean avaliacao avaliacao);
 }

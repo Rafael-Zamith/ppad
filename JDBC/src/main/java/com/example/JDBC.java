@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.example.Resources.avaliacaoResources;
+import com.example.Resources.itemResources;
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
 import io.dropwizard.db.DataSourceFactory;
@@ -17,11 +18,13 @@ import io.dropwizard.setup.Environment;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.jdbi.v3.core.Jdbi;
 
+import javax.el.BeanNameELResolver;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 
 import com.example.DAO.loginDAO;
 import com.example.DAO.avaliacDAO;
+import com.example.DAO.itemDAO;
 import com.example.Resources.loginResources;
 
 import java.util.EnumSet;
@@ -67,12 +70,16 @@ public void initialize (final Bootstrap<LoginServiceConfiguration> bootstrap){
 	  final Jdbi jdbi = factory.build(environment, configuration.getDataSourceFactory(), "db");
 	  loginDAO loginDAO = jdbi.onDemand(loginDAO.class);
 	  avaliacDAO avaliacDAO = jdbi.onDemand(avaliacDAO.class);
+	  itemDAO itemDAO = jdbi.onDemand(itemDAO.class);
 
 
 	  loginResources loginResources = new loginResources(loginDAO);
 	  avaliacaoResources avaliacaoResources = new avaliacaoResources(avaliacDAO);
+	  itemResources itemResources = new itemResources(itemDAO);
+
 	  environment.jersey().register(loginResources);
 	  environment.jersey().register(avaliacaoResources);
+	  environment.jersey().register(itemResources);
 
 	  // Enable CORS headers
 	  final FilterRegistration.Dynamic cors =
