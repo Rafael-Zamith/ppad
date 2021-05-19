@@ -11,7 +11,7 @@ function postar(comentario) {
             id_item: id
         };
         console.log(data);
-        fetch("http://127.0.0.1:8080/avaliacao/", {
+        fetch("http://pisana.duckdns.org/:8080/avaliacao/", {
             method: "POST",
                 body: JSON.stringify(data)
         }).then(res => {
