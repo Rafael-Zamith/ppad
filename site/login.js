@@ -1,5 +1,5 @@
 function login(login, senha) {
-    url = "http://pisana.duckdns.org/:8080/login/" + String(login);
+    url = "https://pisana.duckdns.org/:8080/login/" + String(login);
     fetch(url)
         .then(response => response.json())
         .then(data => comparar(data, senha));
