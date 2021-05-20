@@ -9,3 +9,11 @@ database:
   password: wC5]BXB83l
   url: jdbc:mysql://nasana.duckdns.org:3306/prod
   validationQuery: "SELECT 1"
+
+server:
+  applicationConnectors:
+    - type: https
+      port: 8443
+      keyStorePath: example.keystore
+      keyStorePassword: example
+      validateCerts: false
