@@ -1,0 +1,11 @@
+logging:
+  level: INFO
+  loggers:
+    com.trainingcenter: DEBUG
+
+database:
+  driverClass: com.mysql.cj.jdbc.Driver
+  user: prod
+  password: wC5]BXB83l
+  url: jdbc:mysql://nasana.duckdns.org:3306/prod
+  validationQuery: "SELECT 1"

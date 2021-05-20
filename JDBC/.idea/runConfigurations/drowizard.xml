@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="drowizard" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.example.JDBC" />
+    <module name="JDBC" />
+    <option name="PROGRAM_PARAMETERS" value="server config.yml" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

@@ -1,8 +1,7 @@
 desenvolvimento do site acontece na dev branch, caso queira acomapnhar
 
 # ppads-projeto
-Projeto de Prática Profissional de Análise e Desenvolvimento de Sistemas.
+essa branch é dedicada ao desenvolvimento do site, podem existir diferenças entre a versão buildada desse git e o mesmo
 
-Este projeto visa desenvolver um webapp de uma rede social de livros, série e filmes.
-
-Alunos do 5º semestre do curso de Sistemas de Informação da Faculdade de Computação e Informática da Universidade Presbiteriana Mackenzie.
+builds:
+https://ppad-git-dev-rafael-zamith.vercel.app/

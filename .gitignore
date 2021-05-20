@@ -1,2 +1,8 @@
 
 .vscode/settings.json
+JDBC/target/classes/com/example/DAO/ProductMapper.class
+*.class
+*.class
+JDBC/target/classes/com/example/Classes/avaliacao.class
+JDBC/target/classes/com/example/Resources/loginResources.class
+JDBC/.idea/misc.xml
