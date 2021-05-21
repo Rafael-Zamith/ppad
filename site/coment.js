@@ -15,10 +15,12 @@ function postar(comentario) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "https://pisana.duckdns.org:8443/avaliacao/");
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-
+        xhr.onreadystatechange = function () {
+            location.reload();
+        }
         // send the collected data as JSON
         xhr.send(JSON.stringify(data));
-        location.reload();
+        
     }
     else {alert("faça Login!!!")}
 }
