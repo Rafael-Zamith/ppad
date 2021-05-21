@@ -1,5 +1,10 @@
-desenvolvimento do site acontece na dev branch, caso queira acomapnhar
-
+SITE ESTÁ NO AR 🎉🎉🎉🎉🎉🎉
+https://ppad.vercel.app/
+https://ppad.vercel.app/
+https://ppad.vercel.app/
+https://ppad.vercel.app/
+https://ppad.vercel.app/
+https://ppad.vercel.app/
 # ppads-projeto
 essa branch é dedicada ao desenvolvimento do site, podem existir diferenças entre a versão buildada desse git e o mesmo
 
