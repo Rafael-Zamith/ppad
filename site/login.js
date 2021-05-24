@@ -7,7 +7,7 @@ function login(login, senha) {
 }
 function comparar(data, senha) {
     if (data.senha === senha) {
-        console.log("logado");
+        alert("logado");
         localStorage.setItem("usuario", data.username);
     }
     
