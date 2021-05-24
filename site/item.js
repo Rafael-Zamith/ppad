@@ -39,7 +39,7 @@ function setItem(it, id) {
     aa = document.createElement("a");
     aa.setAttribute("href", "pagina-1.html?id="+ String(item.id));
     aa.setAttribute("class", "u-btn u-btn-round u-button-style u-hover-palette-1-light-1 u-palette-1-base u-radius-50 u-btn-1");
-    var tt = document.createTextNode("Avaliar");
+    var tt = document.createTextNode("Avaliações");
     aa.appendChild(tt)
     z.appendChild(aa);
     a.appendChild(z);
